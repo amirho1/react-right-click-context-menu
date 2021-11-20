@@ -1,0 +1,65 @@
+{
+  "name": "react-right-click-menu",
+  "version": "1.0.0",
+  "description": "custom context menu on right click ",
+  "main": "index.ts",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/amirho1/react-right-click-menu.git"
+  },
+  "keywords": [
+    "react-ctx-menu",
+    "react-right-click-menu",
+    "right-click",
+    "menu",
+    "typescript-react-menu"
+  ],
+  "author": "AmirHossein Salighedar",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/amirho1/react-right-click-menu/issues"
+  },
+  "homepage": "https://github.com/amirho1/react-right-click-menu#readme",
+  "devDependencies": {
+    "@babel/core": "^7.16.0",
+    "@babel/preset-env": "^7.16.0",
+    "@babel/preset-react": "^7.16.0",
+    "@babel/preset-typescript": "^7.16.0",
+    "@testing-library/dom": "^8.11.1",
+    "@testing-library/jest-dom": "^5.15.0",
+    "@testing-library/react": "^12.1.2",
+    "@testing-library/user-event": "^13.5.0",
+    "@types/jest": "^27.0.2",
+    "babel-jest": "^27.3.1",
+    "babel-loader": "^8.2.3",
+    "html-webpack-plugin": "^5.5.0",
+    "identity-obj-proxy": "^3.0.0",
+    "jest": "^27.3.1",
+    "sass": "^1.43.4",
+    "sass-loader": "^12.3.0",
+    "ts-jest": "^27.0.7",
+    "ts-loader": "^9.2.6",
+    "ts-node": "^10.4.0",
+    "webpack": "^5.62.0",
+    "webpack-cli": "^4.9.1",
+    "webpack-dev-server": "^4.4.0"
+  },
+  "dependencies": {
+    "@types/react": "^17.0.34",
+    "@types/react-dom": "^17.0.11",
+    "classnames": "^2.3.1",
+    "css-loader": "^6.5.1",
+    "node-sass": "^6.0.1",
+    "prop-types": "^15.7.2",
+    "react": "^17.0.2",
+    "react-dom": "^17.0.2",
+    "react-scripts": "^4.0.3",
+    "style-loader": "^3.3.1",
+    "typescript": "^4.4.4"
+  },
+  "scripts": {
+    "build": "tsc",
+    "test": "jest --env=jsdom --watch",
+    "serve": "webpack serve"
+  }
+}
