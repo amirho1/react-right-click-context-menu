@@ -10,7 +10,7 @@ describe("RightClickMenu", () => {
     cleanup();
 
     // render component
-    render(<RightClickMenu rightClickTargets={[]} />);
+    render(<RightClickMenu />);
 
     element = screen.getByTestId("RightClickMenu");
   });
