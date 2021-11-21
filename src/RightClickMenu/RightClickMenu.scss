@@ -1,7 +1,7 @@
 .right-click-menu {
   box-sizing: border-box;
   background-color: #dee2e6;
-
+  z-index: 999;
   display: none;
   position: fixed;
   list-style: none;

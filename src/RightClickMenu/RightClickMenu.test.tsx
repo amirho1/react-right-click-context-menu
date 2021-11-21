@@ -5,6 +5,8 @@ import RightClickMenu from "./RightClickMenu";
 
 describe("RightClickMenu", () => {
   let element: HTMLElement;
+
+  // initializing before each
   beforeEach(() => {
     // clean up
     cleanup();
@@ -14,9 +16,18 @@ describe("RightClickMenu", () => {
       <div className="test" data-testid="test">
         <RightClickMenu
           rightClickTargets={[
-            { className: "test", menuList: ["hello", "world"] },
+            { className: "test0", menuList: ["hello"] },
+            {
+              className: "test1",
+              menuList: [
+                <p className="description">description</p>,
+                <button className="btn">click</button>,
+              ],
+            },
           ]}
         />
+        <div className="test0" data-testid="test0"></div>
+        <div className="test1" data-testid="test1"></div>
       </div>
     );
     render(page);
@@ -34,11 +45,27 @@ describe("RightClickMenu", () => {
   });
 
   it("should show menu on page on the right click on targetClass", () => {
-    const testElement = screen.queryByTestId("test");
+    const testElement = screen.getByTestId("test0");
 
+    expect(testElement).toBeInTheDocument();
     if (testElement) {
       fireEvent.contextMenu(testElement);
     }
+    console.log(testElement);
     expect(element.className).toMatch("display");
+  });
+
+  it("should append correct children to menu on contextmenu event on each element", () => {
+    const test0 = screen.getByTestId("test0");
+    if (test0) fireEvent.contextMenu(test0);
+    expect(element?.children.length).toBe(1);
+    expect(element?.textContent).toMatch("hello");
+
+    const test1 = screen.getByTestId("test1");
+    if (test1) fireEvent.contextMenu(test1);
+    expect(element?.children.length).toBe(2);
+    expect(element?.querySelector("button")?.textContent).toMatch("click");
+    expect(element?.querySelector("button")?.className).toMatch("btn");
+    expect(element.querySelector(".description")).toBeInTheDocument();
   });
 });
