@@ -1,16 +1,19 @@
-import React, { useEffect, useRef, useState } from "react";
-import { render } from "react-dom";
+import React, { useEffect, useMemo, useRef, useState } from "react";
+import ReactDOM from "react-dom";
 import "./RightClickMenu.scss";
 import PropTypes from "prop-types";
 import classNames from "classnames";
 import { calculateCoordinate } from "../functions/caculateCoordinate";
+import MapLI from "../MapLI/MapLI";
 
 interface Props {
   rightClickTargets?: {
     className: string;
     menuList: (JSX.Element | string)[];
   }[];
-  onWindow?: boolean;
+  preventDefaultOnWindow?: boolean;
+  menuClassName?: string;
+  liClassName?: string;
 }
 
 type TCssCord = "initial" | number;
@@ -25,14 +28,16 @@ export interface ICoordinate {
  * @component RightClickMenu
  * @author Xerxes (AmirHossein Salighedar) (https://github.com/amirho1)
  * @param param
- * @param param.rightClickTargets
- * @param param.onWindow
+ * @param param.rightClickTargets the className of target elements
+ * @param param.onWindow sets prevent from default behavior of right click
  * @returns
  */
 
 export default function RightClickMenu({
   rightClickTargets,
-  onWindow = true,
+  preventDefaultOnWindow = true,
+  menuClassName,
+  liClassName,
 }: Props) {
   // get wrapper ul element of right click menu
   const rightClickUl = useRef<HTMLUListElement>(null);
@@ -43,21 +48,23 @@ export default function RightClickMenu({
     right: "initial",
     bottom: "initial",
   });
-
+  console.log(rightClickUl.current?.clientWidth);
   // prevent from default behavior of right click
   useEffect(() => {
-    if (onWindow) {
+    if (preventDefaultOnWindow) {
       window.addEventListener("contextmenu", e => {
         e.preventDefault();
       });
     }
-  }, [onWindow]);
+  }, [preventDefaultOnWindow]);
 
   // add event listener to all given targets
   useEffect(() => {
     if (rightClickTargets?.length)
       rightClickTargets.forEach(target => {
         const elements = document.querySelectorAll(`.${target.className}`);
+        if (rightClickUl.current)
+          ReactDOM.unmountComponentAtNode(rightClickUl.current);
         elements.forEach(element =>
           (element as HTMLElement).addEventListener("contextmenu", e => {
             // prevent from default behavior on right click
@@ -74,9 +81,18 @@ export default function RightClickMenu({
               calculateCoordinate({
                 clientX: e.clientX,
                 clientY: e.clientY,
-                bottomBorderStartDistance: 200,
-                rightBorderStartDistance: 200,
+                bottomBorderStartDistance: Number(
+                  rightClickUl.current?.clientWidth
+                ),
+                rightBorderStartDistance: Number(
+                  rightClickUl.current?.clientWidth
+                ),
               })
+            );
+            // add elements to the menu
+            ReactDOM.render(
+              <MapLI menuList={target.menuList} liClassName={liClassName} />,
+              rightClickUl.current
             );
           })
         );
@@ -86,24 +102,32 @@ export default function RightClickMenu({
 
   // add event listener to windows for closing the open menu on left click on every where of page
   useEffect(() => {
-    window.addEventListener("click", () => {
+    window.addEventListener("click", e => {
+      e.stopPropagation();
       setIsActive(false);
     });
   }, []);
 
   // styles
-  const styles: React.CSSProperties = {
-    left: menuCoordinate.left,
-    top: menuCoordinate.top,
-    right: menuCoordinate.right,
-    bottom: menuCoordinate.bottom,
-  };
+  const styles: React.CSSProperties = useMemo(
+    () => ({
+      left: menuCoordinate.left,
+      top: menuCoordinate.top,
+      right: menuCoordinate.right,
+      bottom: menuCoordinate.bottom,
+    }),
+    [menuCoordinate]
+  );
 
   return (
     <ul
       ref={rightClickUl}
       style={styles}
-      className={classNames("right-click-menu", { display: isActive })}
+      className={classNames(
+        "right-click-menu",
+        { display: isActive },
+        menuClassName
+      )}
       data-testid="RightClickMenu"></ul>
   );
 }
