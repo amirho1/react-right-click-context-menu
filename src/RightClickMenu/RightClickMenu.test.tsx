@@ -15,6 +15,8 @@ describe("RightClickMenu", () => {
     const page = (
       <div className="test" data-testid="test">
         <RightClickMenu
+          menuClassName="context-wrapper"
+          liClassName="context-li"
           rightClickTargets={[
             { className: "test0", menuList: ["hello"] },
             {
@@ -67,5 +69,6 @@ describe("RightClickMenu", () => {
     expect(element?.querySelector("button")?.textContent).toMatch("click");
     expect(element?.querySelector("button")?.className).toMatch("btn");
     expect(element.querySelector(".description")).toBeInTheDocument();
+    expect(element.lastElementChild?.className).toMatch("context-li");
   });
 });

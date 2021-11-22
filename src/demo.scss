@@ -47,17 +47,11 @@ a {
 }
 
 .description {
-  position: absolute;
-  top: 2em;
-  left: 0;
-  right: 0;
-  margin: auto;
+  margin: 2em auto;
   width: fit-content;
   color: white;
   max-width: 500px;
-
   text-align: center;
-
   p {
     margin-top: 2em;
     font-size: 1.5rem;
@@ -65,5 +59,23 @@ a {
 
   h2 {
     margin-top: 2em;
+  }
+}
+
+.context-wrapper {
+  background-color: #212529;
+  width: 100px;
+}
+
+.context-li {
+  width: 100%;
+  & > * {
+    cursor: pointer;
+    color: white;
+    display: flex;
+    padding: 1em;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
   }
 }

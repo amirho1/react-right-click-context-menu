@@ -7,7 +7,8 @@ export default function Demo() {
   return (
     <div className="demo">
       <RightClickMenu
-        menuClassName="menu-demo"
+        menuClassName="context-wrapper"
+        liClassName="context-li"
         rightClickTargets={[
           {
             className: "demo-right",
@@ -73,6 +74,7 @@ export default function Demo() {
           </h2>
         </div>
       </div>
+      <RightClickMenu />
       <div className="demo-right"></div>
     </div>
   );

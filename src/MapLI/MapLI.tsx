@@ -1,5 +1,4 @@
 import React, { ReactElement } from "react";
-import "./MapLI.scss";
 import classNames from "classnames";
 
 interface Props {
@@ -12,7 +11,12 @@ export default function MapListOfElements({ menuList, liClassName }: Props) {
     <>
       {menuList.map((item, index) => {
         return (
-          <li key={index} className={classNames("list-item", liClassName)}>
+          <li
+            key={index}
+            className={classNames("list-item", liClassName)}
+            onAuxClick={e => {
+              e.stopPropagation();
+            }}>
             {item}
           </li>
         );

@@ -13,13 +13,13 @@ import { calculateCoordinate } from "../functions/calculateCoordinate";
 import MapLI from "../MapLI/MapLI";
 
 interface Props {
+  liClassName?: string;
   rightClickTargets?: {
     className: string;
     menuList: (JSX.Element | string)[];
   }[];
   preventDefaultOnWindow?: boolean;
   menuClassName?: string;
-  liClassName?: string;
 }
 
 type TCssCoordinate = "initial" | number;
@@ -113,7 +113,7 @@ export default function RightClickMenu({
         rightClickUl.current
       );
     },
-    []
+    [liClassName]
   );
 
   // add event listener to all given targets
@@ -202,5 +202,5 @@ RightClickMenu.propTypes = {
   ),
   preventDefaultOnWindow: PropTypes.bool,
   menuClassName: PropTypes.string,
-  liCLassName: PropTypes.string,
+  liClassName: PropTypes.string,
 };

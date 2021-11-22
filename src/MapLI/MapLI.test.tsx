@@ -12,7 +12,7 @@ describe("MapLI", () => {
 
     render(
       <ul data-testid={testId}>
-        <MapLI menuList={menuList} />
+        <MapLI menuList={menuList} liClassName="context-li" />
       </ul>
     );
 
@@ -27,5 +27,9 @@ describe("MapLI", () => {
     expect(element.children.length).toBe(2);
     expect(element.querySelector("div")?.innerHTML).toMatch("Hello world");
     expect(element.querySelector("li")?.innerHTML).toMatch("test");
+  });
+
+  it("should have the given className for each list item", () => {
+    expect(element.lastElementChild?.className).toMatch("context-li");
   });
 });
