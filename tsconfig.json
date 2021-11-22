@@ -18,6 +18,6 @@
     "sourceMap": true,
     "noImplicitThis": false
   },
-  "include": ["src/**/*.tsx", "src/**/*.ts", "index.tsx"],
+  "include": ["src/**/*.tsx", "src/**/*.ts", "index.tsx", "index.ts"],
   "exclude": ["node_modules", "dev_server.js", "src/demo.tsx"]
 }

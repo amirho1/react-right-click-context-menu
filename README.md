@@ -5,13 +5,13 @@ A custom context menu with a default styles but u can modify it and set ur style
 ## Install
 
 ```
-  npm i
+  npm i react-right-click-context-menu
 ```
 
 also You can clone it
 
 ```
-  git clone https://github.com/amirho1/react-right-click-menu
+  git clone https://github.com/amirho1/react-right-click-context-menu
 ```
 
 then
@@ -32,6 +32,14 @@ then
 
 ```
   npm run serve
+```
+
+## Build
+
+after getting build you need to copy the scss files in to their files in dist for example MapLI.scss and RightClickMenu.scss
+
+```
+npm run build
 ```
 
 ## Example
