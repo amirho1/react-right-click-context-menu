@@ -1,6 +1,6 @@
 {
   "name": "react-right-click-context-menu",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "custom context menu on right click ",
   "main": "index.ts",
   "repository": {
