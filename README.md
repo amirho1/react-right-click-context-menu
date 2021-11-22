@@ -2,10 +2,10 @@
 
 A custom context menu with a default styles but u can modify it and set ur style
 
-## Install
+## Installation
 
 ```
-  npm i react-right-click-context-menu
+npm i react-right-click-context-menu
 ```
 
 also You can clone it
