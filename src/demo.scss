@@ -1,3 +1,9 @@
+@import url("https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap");
+
+body {
+  font-family: "Montserrat";
+}
+
 :root {
   box-sizing: border-box;
 }
@@ -11,7 +17,53 @@
 }
 
 .demo {
-  background-color: #333;
+  background-color: white;
   height: 100vh;
   width: 100vw;
+  display: flex;
+  border: 1px solid green;
+  position: relative;
+}
+
+a {
+  text-decoration: none;
+  color: #212529;
+  width: 2em;
+  height: max-content;
+}
+
+.demo-right,
+.demo-left {
+  width: 50%;
+  height: 100%;
+}
+
+.demo-right {
+  background-color: lightblue;
+}
+
+.demo-left {
+  background-color: orange;
+}
+
+.description {
+  position: absolute;
+  top: 2em;
+  left: 0;
+  right: 0;
+  margin: auto;
+  width: fit-content;
+  color: white;
+  max-width: 500px;
+
+  text-align: center;
+
+  p {
+    margin-top: 2em;
+    font-size: 1.5rem;
+  }
+
+  h2 {
+    margin-top: 2em;
+  }
 }

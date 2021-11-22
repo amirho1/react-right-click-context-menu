@@ -132,7 +132,7 @@ export default function RightClickMenu({
         );
       });
 
-    // remove event listener
+    // remove event listeners
     return () => {
       if (rightClickTargets?.length)
         rightClickTargets.forEach(target => {
